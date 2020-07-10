@@ -23,14 +23,12 @@ public class Discovery extends JFrame{
     private final int WINDOW_HEIGHT = 480; 
 
     public Discovery(){
-        setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         initView();
+        generalInit();
         add(button, BorderLayout.SOUTH);
         add(textField, BorderLayout.NORTH);
         add(textArea, BorderLayout.CENTER);
-        setVisible(true);
-        setLocationRelativeTo(null);
+        setTitle("Discovery");
     }
 
     /**
@@ -46,6 +44,16 @@ public class Discovery extends JFrame{
         button.setForeground(DEFAULT_COLOR_FOREGROUND);
         textField.setEditable(false);
         textField.setBorder(BorderFactory.createLineBorder(DEFAULT_COLOR_BACKGROUND, 3));
+    }
+
+    /**
+     * Initialize some general config
+     */
+    private void generalInit(){
+        setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setVisible(true);
+        setLocationRelativeTo(null);
     }
 
     public static void main(String[] args){

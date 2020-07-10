@@ -19,6 +19,7 @@ public class Test extends JFrame{
         initView();
         generalInit();
         add(panel, BorderLayout.CENTER);
+        setTitle("Test");
     }
 
     /**

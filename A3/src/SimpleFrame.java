@@ -14,7 +14,7 @@ import javax.swing.SwingConstants;
 public class SimpleFrame extends JFrame{
     private JLabel label;
     private JButton button;
-    private final String LABEL_CONTENT = "Exercise 1";
+    private final String LABEL_CONTENT = "This is a label";
     private final String BUTTON_CONTENT = "OK";
     private final int WINDOW_WIDTH = 720;  
     private final int WINDOW_HEIGHT = 480; 
@@ -22,6 +22,7 @@ public class SimpleFrame extends JFrame{
 
     public SimpleFrame(){
         generalInit();
+        setTitle("SimpleFrame");
         //3. Then add a label to this window, representing a label (a short text).
         label = new JLabel(LABEL_CONTENT);
         //4. Center the label text using the setHorizontalAlignment method.

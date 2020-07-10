@@ -25,14 +25,11 @@ public class Factorial extends JFrame{
      */
     public Factorial(){
         initView();
-        setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        generalInit();
         add(flow1);
         add(flow2);
         add(flow3);
         setTitle("Factorial form");
-        setVisible(true);
-        setLocationRelativeTo(null);
     }
 
      /**
@@ -62,6 +59,16 @@ public class Factorial extends JFrame{
         flow1.add("textField", textField);
         flow2.add("textArea2", textArea2);
         flow3.add("button", button);
+    }
+
+    /**
+     * Initialize some general config
+     */
+    private void generalInit(){
+        setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setVisible(true);
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -104,12 +111,14 @@ public class Factorial extends JFrame{
             // If input is a number
             if(!isNumeric(textField.getText())){
                 textArea2.setText("Result:  Error!!");
+                button.setText("Compute");
                 JOptionPane.showMessageDialog(null, "The input should be a integer", "The input is invalid", JOptionPane.ERROR_MESSAGE);
             }else{
                 int n = Integer.valueOf(textField.getText());
                 // If input is valid
                 if(n<0 || n >16){
                     textArea2.setText("Result:  Error!!");
+                    button.setText("Compute");
                     JOptionPane.showMessageDialog(null, "The number must be between 0 and 16", "The input is invalid", JOptionPane.ERROR_MESSAGE);
                 }else{
                     textArea2.setText("Result:  " + calculate(n));
