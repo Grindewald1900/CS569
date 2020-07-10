@@ -1,13 +1,13 @@
-## Getting Started
+## Assignment3
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+Simple GUI program with swing and awt
 
 ## Folder Structure
 
 The workspace contains two folders by default, where:
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+- `src`: the source code
+- `lib`: libraries
 
 ## Dependency Management
 
