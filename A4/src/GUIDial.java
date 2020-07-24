@@ -84,7 +84,7 @@ public class GUIDial extends JFrame implements ActionListener, KeyListener {
 		//Notice: ASCII code for CR(carriage return) on 87-keys keyboard is 10, not 13  
 		if((key>'0' && key<'9')){
 			return true;
-		}else if(key == 10){
+		}else if(key == 13){
 			validateInputNumber();
 		}
 		return false;	

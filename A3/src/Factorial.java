@@ -132,3 +132,19 @@ public class Factorial extends JFrame{
         new Factorial();
     }
 }
+
+
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
