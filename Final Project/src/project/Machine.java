@@ -25,8 +25,11 @@ public class Machine extends JFrame implements ActionListener{
 			e.printStackTrace();
 		}
 		setPreferredSize(new Dimension(WINDOW_WIDTH, WINDOW_HEIGHT));
-		initForm();
+		setLayout(new GridLayout(4, 1));
 		init();
+		initForm();
+		add(createList1());
+		add(createList2());
 		addButtons();
 		setVisible(true);
 		pack();
@@ -39,9 +42,7 @@ public class Machine extends JFrame implements ActionListener{
 		catch(Exception ex){
 			System.out.println(ex.getMessage());
 		}
-		setLayout(new GridLayout(4, 1));
-		add(createList1());
-		add(createList2());
+		
 		// TODO fix this
 		//  moveFirst();		
 		 updateLists();

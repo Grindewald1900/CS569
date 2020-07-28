@@ -1,6 +1,7 @@
 package project;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -21,22 +22,27 @@ public class Merchandise extends JFrame implements ActionListener{
 	private JLabeledTextBox lb;
 	private DataBase db;
 	private ResultSet rs,rs1;
+	private final int WINDOW_WIDTH = 500;
+	private final int WINDOW_HEIGHT = 720;
 	boolean modif=false;
 	JListPanel l1;
 	JListPanel l2,l3,l4;
 	public Merchandise(DataBase db){
 		super("Merchandise");
 		lb = new JLabeledTextBox();	
-
-		addButtons();
 		try{
 			this.db = db;
 		}
 		catch(Exception e){
 			e.printStackTrace();
 		}
+		setPreferredSize(new Dimension(WINDOW_WIDTH, WINDOW_HEIGHT));
+		setLayout(new GridLayout(4, 1));
 		initForm();
 		init();
+		add(createList1());
+		add(createList2());
+		addButtons();
 		setVisible(true);
 		pack();
 	}
@@ -47,8 +53,9 @@ public class Merchandise extends JFrame implements ActionListener{
 		 }
 		catch(Exception ex){
 			System.out.println(ex.getMessage());
-	    }	
-		 moveFirst();		
+		}	
+		// Todo error:  Cannot read the array length because "Values" is null
+		//  moveFirst();		
 	}
 	private void moveNext(){
 		lb.setValues(db.getNextRecord(rs));
@@ -62,22 +69,45 @@ public class Merchandise extends JFrame implements ActionListener{
 		lb.setValues(db.getPreviousRecord(rs));
 		updateLists();
 	}
+
 	private void moveLast(){
 		lb.setValues(db.getLastRecord(rs));
 		updateLists();
 	}
+
 	private void addButtons(){
-		// Add your code here
-
+		String []s1={"New","Save","Edit","Delete","Exit"};
+		String []s2={"First","Previous","Next","Last"};
+		JButtonImage bp1= new JButtonImage(s1,1,s1.length);
+		JButtonImage bp2= new JButtonImage(s2,1,s2.length);
+		bp1.addActionListener(this);
+		bp2.addActionListener(this);
+		JPanel p1 = new JPanel();
+		JPanel p2 = new JPanel();
+		p1.add(bp1);
+		p2.add(bp2);
+		JPanel p3 = new JPanel(new GridLayout(2,1,1,1));
+		p3.add(p1);
+		p3.add(p2);
+		getContentPane().add(p3);
 	}
+
 	private void initForm(){
-		// Add your code here
-
+		lb.addTextComponent("Reference", JLabeledTextBox.TEXTFIELD);
+		lb.addTextComponent("Designation", JLabeledTextBox.TEXTFIELD);
+		lb.addTextComponent("Unit price", JLabeledTextBox.TEXTFIELD);
+		lb.addTextComponent("Type", JLabeledTextBox.TEXTFIELD);
+		lb.setLabelsPreferredSize(80, 20);
+		lb.setTextsPreferredSize(120, 20);
+		lb.setBorder(BorderFactory.createTitledBorder("Information about the merchandise"));
+		add(lb);
 	}
+	
 	public void actionPerformed(ActionEvent ev){
 		// Add your code here
 
 	}
+
 	private JPanel createList1(){
 		l1 = new JListPanel(5,20,100);
 		l2 = new JListPanel(5,20,100);
