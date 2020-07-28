@@ -10,22 +10,24 @@ public class Machine extends JFrame implements ActionListener{
 	private JLabeledTextBox lb;
 	private DataBase db;
 	private ResultSet rs;
+	private final int WINDOW_WIDTH = 500;
+	private final int WINDOW_HEIGHT = 720;
 	boolean modif=false;
 	JListPanel list_merchandise1, list_merchandise2;
 	JListPanel list_raw_material1, list_raw_material2;
 	public Machine(DataBase db){
 		super("Machine");
 		lb = new JLabeledTextBox();	
-
-		addButtons();
 		try{
 			this.db = db;
 		}
 		catch(Exception e){
 			e.printStackTrace();
 		}
+		setPreferredSize(new Dimension(WINDOW_WIDTH, WINDOW_HEIGHT));
 		initForm();
 		init();
+		addButtons();
 		setVisible(true);
 		pack();
 	}
@@ -36,8 +38,12 @@ public class Machine extends JFrame implements ActionListener{
 		 }
 		catch(Exception ex){
 			System.out.println(ex.getMessage());
-	    }	
-		 moveFirst();		
+		}
+		setLayout(new GridLayout(4, 1));
+		add(createList1());
+		add(createList2());
+		// TODO fix this
+		//  moveFirst();		
 		 updateLists();
 	}
 	private void moveNext(){
@@ -57,10 +63,29 @@ public class Machine extends JFrame implements ActionListener{
 		updateLists();
 	}
 	private void addButtons(){
-		// Add your code here
+		String []s1={"New","Save","Edit","Delete","Exit"};
+		String []s2={"First","Previous","Next","Last"};
+		JButtonImage bp1= new JButtonImage(s1,1,s1.length);
+		JButtonImage bp2= new JButtonImage(s2,1,s2.length);
+		bp1.addActionListener(this);
+		bp2.addActionListener(this);
+		JPanel p1 = new JPanel();
+		JPanel p2 = new JPanel();
+		p1.add(bp1);
+		p2.add(bp2);
+		JPanel p3 = new JPanel(new GridLayout(2,1,1,1));
+		p3.add(p1);
+		p3.add(p2);
+		getContentPane().add(p3);
 	}
 	private void initForm(){
-		// Add your code here
+		lb.addTextComponent("Machine id", JLabeledTextBox.TEXTFIELD);
+		lb.addTextComponent("Designation", JLabeledTextBox.TEXTFIELD);
+		lb.addTextComponent("Description", JLabeledTextBox.TEXTFIELD);
+		lb.setLabelsPreferredSize(80, 20);
+		lb.setTextsPreferredSize(120, 20);
+		lb.setBorder(BorderFactory.createTitledBorder("Information about the machine"));
+		add(lb);
 	}
 	public void actionPerformed(ActionEvent ev){
 		// Add your code here

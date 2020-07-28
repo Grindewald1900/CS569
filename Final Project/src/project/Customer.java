@@ -90,7 +90,7 @@ public class Customer extends JFrame implements ActionListener{
 		
 		getContentPane().add(p3,BorderLayout.SOUTH);
 	}
-	
+
 	public void actionPerformed(ActionEvent ev){
 		JButton button = (JButton)ev.getSource();
 		switch(button.getName()){
@@ -113,6 +113,7 @@ public class Customer extends JFrame implements ActionListener{
 				break;
 		}
 	}
+	
 	private void initForm(){
 		lb.addTextComponent("Customer id", JLabeledTextBox.TEXTFIELD);
 		lb.addTextComponent("Full name", JLabeledTextBox.TEXTFIELD);
@@ -121,8 +122,8 @@ public class Customer extends JFrame implements ActionListener{
 		lb.setLabelsPreferredSize(80, 20);
 		lb.setTextsPreferredSize(120, 20);
 		add(lb);
-
 	}
+
 	private void insert(){
 		if(edit == false) {
 			try{
