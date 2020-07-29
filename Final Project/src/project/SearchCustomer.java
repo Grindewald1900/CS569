@@ -6,21 +6,41 @@ import javax.swing.*;
 import java.sql.*;
 
 public class SearchCustomer extends JFrame implements KeyListener{
-	
-	JFlexGrid fg;
-	JTextField tf;
+	private JLabel labelSearch;
+	private JPanel panel;
+	private JPanel panelQuery;
+	private JFlexGrid fg;
+	private JTextField tf;
 	DataBase db;
+
 	public SearchCustomer(DataBase db){
 		super("Search Customers");
 		this.db=db;
 		tf= new JTextField(20);
 		initFlexGrid();
-		
-		// Add your code here
-
+		initView();
 		setVisible(true);
 		pack();
 	}
+
+	private void initView(){
+		panel = new JPanel();
+		panelQuery = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		labelSearch = new JLabel("Search");
+
+		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+		fg.setBorder(BorderFactory.createTitledBorder("Result"));
+		panelQuery.setBorder(BorderFactory.createTitledBorder("Query"));
+		panelQuery.add(labelSearch);
+		panelQuery.add(tf);
+		tf.addKeyListener(this);
+		panel.add(panelQuery);
+		panel.add(fg);
+		getContentPane().add(panel, BorderLayout.CENTER);
+		setVisible(true);
+		pack();
+	}
+
 	public void initFlexGrid(){
 		try{
 			ResultSet rs = db.executeQuery("select * from customer;");
