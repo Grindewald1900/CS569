@@ -89,7 +89,7 @@ public class Machine extends JFrame implements ActionListener{
 		add(lb);
 	}
 	public void actionPerformed(ActionEvent ev){
-		// Add your code here
+		// TODO Add your code here
 	}
 	private JPanel createList1(){
 		list_merchandise1 = new JListPanel(5,20,100);
@@ -97,14 +97,14 @@ public class Machine extends JFrame implements ActionListener{
 		JButton select = new JButton(">>");
 		select.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent ev){
-				// Add your code here
+				// TODO Add your code here
 			}
 			});
 
 		JButton retrieve = new JButton("<<");
 		retrieve.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent ev){
-				// Add your code here
+				// TODO Add your code here
 			}
 			});
 			JPanel p = new JPanel(new GridLayout(2,1));
@@ -124,14 +124,14 @@ public class Machine extends JFrame implements ActionListener{
 		JButton select = new JButton(">>");
 		select.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent ev){
- 				// Add your code here
+ 				// TODO Add your code here
 			}
 			});
 
 		JButton retrieve = new JButton("<<");
 		retrieve.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent ev){
- 				// Add your code here
+ 				// TODO Add your code here
 			}
 		});
 		JPanel p = new JPanel(new GridLayout(2,1));

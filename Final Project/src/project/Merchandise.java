@@ -104,7 +104,7 @@ public class Merchandise extends JFrame implements ActionListener{
 	}
 	
 	public void actionPerformed(ActionEvent ev){
-		// Add your code here
+		// TODO Add your code here
 
 	}
 
@@ -114,14 +114,14 @@ public class Merchandise extends JFrame implements ActionListener{
 		JButton select = new JButton(">>");
 		select.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent ev){
-				// Add your code here
+				// TODO Add your code here
 			}
 			});
 
 		JButton retrieve = new JButton("<<");
 		retrieve.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent ev){
-				// Add your code here
+				// TODO Add your code here
 			}
 			});
 			JPanel p = new JPanel(new GridLayout(2,1));
@@ -141,14 +141,14 @@ public class Merchandise extends JFrame implements ActionListener{
 		JButton select = new JButton(">>");
 		select.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent ev){
-				// Add your code here
+				// TODO Add your code here
 			}
 			});
  
 		JButton retrieve = new JButton("<<");
 		retrieve.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent ev){
-				// Add your code here
+				// TODO Add your code here
 			}
 			});
 			JPanel p = new JPanel(new GridLayout(2,1));

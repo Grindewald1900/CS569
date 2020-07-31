@@ -57,18 +57,15 @@ public class SearchCustomer extends JFrame implements KeyListener{
 	}
 	@Override
 	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
-		// Add your code here
+		//TODO Add your code here
 	}
 	@Override
 	public void keyPressed(KeyEvent e) {
-		// TODO Auto-generated method stub
-		// Add your code here
+		//TODO Add your code here
 	}
 	@Override
 	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
-		// Add your code here
+		//TODO Add your code here
 	}
 	public static void main(String []args){
 		DataBase db = new DataBase(DataBase.MYSQL);
