@@ -62,17 +62,17 @@ public class SearchMerchandise extends JFrame implements KeyListener{
 
 	@Override
 	public void keyTyped(KeyEvent e) {
-		//TODO Add your code here
+		fg.search(tf.getText());
 	}
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		//TODO Add your code here
+		fg.search(tf.getText());
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		//TODO Add your code here
+		fg.search(tf.getText());
 	}
 	public static void main(String []args){
 		DataBase db = new DataBase(DataBase.MYSQL);

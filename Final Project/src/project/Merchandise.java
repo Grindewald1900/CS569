@@ -56,7 +56,6 @@ public class Merchandise extends JFrame implements ActionListener{
 	private void init(){
 		 try{
 			rs = db.executeQuery("Select * from merchandise");
-			System.out.println("RS1:" + rs);
 		 	//rs.first();
 		 }
 		catch(Exception ex){
@@ -112,8 +111,38 @@ public class Merchandise extends JFrame implements ActionListener{
 	}
 	
 	public void actionPerformed(ActionEvent ev){
-		// TODO Add your code here
-
+		JButton button = (JButton)ev.getSource();
+		switch(button.getName()){
+			case "New":
+				lb.clear();
+				lb.setLockedAll(false);
+				break;
+			case "Save":
+				break;
+			case "Edit":
+				update();
+				break;
+			case "Delete":
+				delete();
+				break;
+			case "Exit":
+				setVisible(false);
+				break;
+			
+			case "First":
+				moveFirst();
+				break;
+			case "Previous":
+				movePrevious();
+				break;
+			case "Next":
+				moveNext();
+				break;
+			case "Last":
+				moveLast();
+			default:
+				break;
+		}
 	}
 
 	private JPanel createList1(){
@@ -122,14 +151,16 @@ public class Merchandise extends JFrame implements ActionListener{
 		JButton select = new JButton(">>");
 		select.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent ev){
-				// TODO Add your code here
+				l2.addItems(l1.getSelectedElements());
+				l1.removeItems(l1.getSelectedElements());
 			}
 			});
 
 		JButton retrieve = new JButton("<<");
 		retrieve.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent ev){
-				// TODO Add your code here
+				l1.addItems(l2.getSelectedElements());
+				l2.removeItems(l2.getSelectedElements());
 			}
 			});
 			JPanel p = new JPanel(new GridLayout(2,1));
@@ -149,14 +180,16 @@ public class Merchandise extends JFrame implements ActionListener{
 		JButton select = new JButton(">>");
 		select.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent ev){
-				// TODO Add your code here
+				l4.addItems(l3.getSelectedElements());
+				l3.removeItems(l3.getSelectedElements());
 			}
 			});
  
 		JButton retrieve = new JButton("<<");
 		retrieve.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent ev){
-				// TODO Add your code here
+				l3.addItems(l4.getSelectedElements());
+				l4.removeItems(l4.getSelectedElements());
 			}
 			});
 			JPanel p = new JPanel(new GridLayout(2,1));

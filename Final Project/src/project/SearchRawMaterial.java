@@ -49,17 +49,17 @@ public class SearchRawMaterial extends JFrame implements KeyListener{
 	}
 	@Override
 	public void keyTyped(KeyEvent e) {
-		// TODO Add your code here
+		// TODO Auto-generated method stub
 		fg.search(tf.getText());
 	}
 	@Override
 	public void keyPressed(KeyEvent e) {
-		// TODO Add your code here
+		// TODO Auto-generated method stub
 		fg.search(tf.getText());
 	}
 	@Override
 	public void keyReleased(KeyEvent e) {
-		// TODO Add your code here
+		// TODO Auto-generated method stub
 		fg.search(tf.getText());
 	}
 	public static void main(String []args){

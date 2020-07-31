@@ -43,13 +43,11 @@ public class Machine extends JFrame implements ActionListener{
 	private void init(){
 		 try{
 			rs = db.executeQuery("Select * from machine");
-			System.out.println("RS1:" + rs);
 		 	//rs.first();
 		 }
 		catch(Exception ex){
 			System.out.println(ex.getMessage());
 		}
-		// TODO fix this
 		 moveFirst();		
 		 updateLists();
 	}
@@ -58,8 +56,6 @@ public class Machine extends JFrame implements ActionListener{
 		updateLists();
 	}
 	private void moveFirst(){
-		System.out.println("RS:" + rs);
-		System.out.println("Set value:" + db.getFirstRecord(rs));
 		lb.setValues(db.getFirstRecord(rs));
 		updateLists();
 	}
@@ -98,7 +94,38 @@ public class Machine extends JFrame implements ActionListener{
 		add(lb);
 	}
 	public void actionPerformed(ActionEvent ev){
-		// TODO Add your code here
+		JButton button = (JButton)ev.getSource();
+		switch(button.getName()){
+			case "New":
+				lb.clear();
+				lb.setLockedAll(false);
+				break;
+			case "Save":
+				break;
+			case "Edit":
+				update();
+				break;
+			case "Delete":
+				delete();
+				break;
+			case "Exit":
+				setVisible(false);
+				break;
+			
+			case "First":
+				moveFirst();
+				break;
+			case "Previous":
+				movePrevious();
+				break;
+			case "Next":
+				moveNext();
+				break;
+			case "Last":
+				moveLast();
+			default:
+				break;
+		}
 	}
 	private JPanel createList1(){
 		list_merchandise1 = new JListPanel(5,20,100);
@@ -106,14 +133,15 @@ public class Machine extends JFrame implements ActionListener{
 		JButton select = new JButton(">>");
 		select.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent ev){
-				// TODO Add your code here
+				list_merchandise2.addItems(list_merchandise1.getSelectedElements());
+				list_merchandise1.removeItems(list_merchandise1.getSelectedElements());
 			}
 			});
-
 		JButton retrieve = new JButton("<<");
 		retrieve.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent ev){
-				// TODO Add your code here
+				list_merchandise1.addItems(list_merchandise2.getSelectedElements());
+				list_merchandise2.removeItems(list_merchandise2.getSelectedElements());
 			}
 			});
 			JPanel p = new JPanel(new GridLayout(2,1));
@@ -133,14 +161,16 @@ public class Machine extends JFrame implements ActionListener{
 		JButton select = new JButton(">>");
 		select.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent ev){
- 				// TODO Add your code here
+				list_raw_material2.addItems(list_raw_material1.getSelectedElements());
+				list_raw_material1.removeItems(list_raw_material1.getSelectedElements());
 			}
 			});
 
 		JButton retrieve = new JButton("<<");
 		retrieve.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent ev){
- 				// TODO Add your code here
+				list_raw_material1.addItems(list_raw_material2.getSelectedElements());
+				list_raw_material2.removeItems(list_raw_material2.getSelectedElements());
 			}
 		});
 		JPanel p = new JPanel(new GridLayout(2,1));
