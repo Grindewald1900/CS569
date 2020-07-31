@@ -14,6 +14,7 @@ import javax.swing.JMenuItem;
 public class Main extends JFrame implements ActionListener{
 	
 	Container content;
+	// TODO change the image path
 	Image img = Toolkit.getDefaultToolkit().getImage("Final Project/Images/Production2.png");
 	private DataBase db;
 	public Main(DataBase db){

@@ -10,41 +10,47 @@ public class Machine extends JFrame implements ActionListener{
 	private JLabeledTextBox lb;
 	private DataBase db;
 	private ResultSet rs;
-	private final int WINDOW_WIDTH = 500;
-	private final int WINDOW_HEIGHT = 720;
+	private final int WINDOW_WIDTH = 550;
+	private final int WINDOW_HEIGHT = 620;
 	boolean modif=false;
 	JListPanel list_merchandise1, list_merchandise2;
 	JListPanel list_raw_material1, list_raw_material2;
 	public Machine(DataBase db){
 		super("Machine");
-		lb = new JLabeledTextBox();	
+		initView();
 		try{
 			this.db = db;
 		}
 		catch(Exception e){
 			e.printStackTrace();
 		}
-		setPreferredSize(new Dimension(WINDOW_WIDTH, WINDOW_HEIGHT));
-		setLayout(new GridLayout(4, 1));
 		init();
+		
+	}
+
+	private void initView(){
+		setPreferredSize(new Dimension(WINDOW_WIDTH, WINDOW_HEIGHT));
+		setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
+		lb = new JLabeledTextBox();	
 		initForm();
 		add(createList1());
 		add(createList2());
-		addButtons();
+		addButtons();	
 		setVisible(true);
-		pack();
+		pack();		
 	}
+
 	private void init(){
 		 try{
-		 	rs = db.executeQuery("Select * from machine");
+			rs = db.executeQuery("Select * from machine");
+			System.out.println("RS1:" + rs);
 		 	//rs.first();
 		 }
 		catch(Exception ex){
 			System.out.println(ex.getMessage());
 		}
-		
 		// TODO fix this
-		//  moveFirst();		
+		 moveFirst();		
 		 updateLists();
 	}
 	private void moveNext(){
@@ -52,6 +58,8 @@ public class Machine extends JFrame implements ActionListener{
 		updateLists();
 	}
 	private void moveFirst(){
+		System.out.println("RS:" + rs);
+		System.out.println("Set value:" + db.getFirstRecord(rs));
 		lb.setValues(db.getFirstRecord(rs));
 		updateLists();
 	}
@@ -63,6 +71,7 @@ public class Machine extends JFrame implements ActionListener{
 		lb.setValues(db.getLastRecord(rs));
 		updateLists();
 	}
+
 	private void addButtons(){
 		String []s1={"New","Save","Edit","Delete","Exit"};
 		String []s2={"First","Previous","Next","Last"};
@@ -74,7 +83,7 @@ public class Machine extends JFrame implements ActionListener{
 		JPanel p2 = new JPanel();
 		p1.add(bp1);
 		p2.add(bp2);
-		JPanel p3 = new JPanel(new GridLayout(2,1,1,1));
+		JPanel p3 = new JPanel(new GridLayout(0,1,2,2));
 		p3.add(p1);
 		p3.add(p2);
 		getContentPane().add(p3);

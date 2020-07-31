@@ -43,11 +43,12 @@ public class Customer extends JFrame implements ActionListener{
 		addLabels();
 		initForm();
 		addButtons();
-
 	}
+	
 	private void init(){
 		 try{
-		 	rs = db.executeQuery("Select * from customer");
+			rs = db.executeQuery("Select * from customer");
+			System.out.println("RS2:" + rs);
 		 }
 		catch(Exception ex){
 			System.out.println(ex.getMessage());

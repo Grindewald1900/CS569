@@ -22,40 +22,48 @@ public class Merchandise extends JFrame implements ActionListener{
 	private JLabeledTextBox lb;
 	private DataBase db;
 	private ResultSet rs,rs1;
-	private final int WINDOW_WIDTH = 500;
-	private final int WINDOW_HEIGHT = 720;
+	private final int WINDOW_WIDTH = 550;
+	private final int WINDOW_HEIGHT = 620;
 	boolean modif=false;
 	JListPanel l1;
 	JListPanel l2,l3,l4;
+
 	public Merchandise(DataBase db){
 		super("Merchandise");
-		lb = new JLabeledTextBox();	
+		initView();
 		try{
 			this.db = db;
 		}
 		catch(Exception e){
 			e.printStackTrace();
 		}
+		init();	
+		
+	}
+
+	private void initView(){
 		setPreferredSize(new Dimension(WINDOW_WIDTH, WINDOW_HEIGHT));
-		setLayout(new GridLayout(4, 1));
+		setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
+		lb = new JLabeledTextBox();	
 		initForm();
-		init();
 		add(createList1());
 		add(createList2());
 		addButtons();
 		setVisible(true);
 		pack();
 	}
+
 	private void init(){
 		 try{
-		 	rs = db.executeQuery("Select * from merchandise");
+			rs = db.executeQuery("Select * from merchandise");
+			System.out.println("RS1:" + rs);
 		 	//rs.first();
 		 }
 		catch(Exception ex){
 			System.out.println(ex.getMessage());
 		}	
 		// Todo error:  Cannot read the array length because "Values" is null
-		//  moveFirst();		
+		 moveFirst();		
 	}
 	private void moveNext(){
 		lb.setValues(db.getNextRecord(rs));
@@ -86,7 +94,7 @@ public class Merchandise extends JFrame implements ActionListener{
 		JPanel p2 = new JPanel();
 		p1.add(bp1);
 		p2.add(bp2);
-		JPanel p3 = new JPanel(new GridLayout(2,1,1,1));
+		JPanel p3 = new JPanel(new GridLayout(0,1,2,2));
 		p3.add(p1);
 		p3.add(p2);
 		getContentPane().add(p3);
