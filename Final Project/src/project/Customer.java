@@ -97,6 +97,7 @@ public class Customer extends JFrame implements ActionListener{
 		switch(button.getName()){
 			case "New":
 				lb.clear();
+				lb.setLockedAll(false);
 				break;
 			case "Save":
 				insert();
@@ -110,6 +111,18 @@ public class Customer extends JFrame implements ActionListener{
 			case "Exit":
 				setVisible(false);
 				break;
+	
+			case "First":
+				moveFirst();
+				break;
+			case "Previous":
+				movePrevious();
+				break;
+			case "Next":
+				moveNext();
+				break;
+			case "Last":
+				moveLast();
 			default:
 				break;
 		}

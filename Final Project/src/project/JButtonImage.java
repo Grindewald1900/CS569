@@ -39,9 +39,8 @@ public class JButtonImage extends JPanel{
 		this(icones,icones,choice);
 	}
 	private void createButton(String[] icones,String []Tooltips){
-		// TODO change the image path
 		for(int i=0;i<icones.length;i++){
-			JButton b= new JButton(new ImageIcon("Final Project/Images/"+icones[i]+".gif"));
+			JButton b= new JButton(new ImageIcon("Images/"+icones[i]+".gif"));
 			b.setName(Tooltips[i]);
 			b.setToolTipText(Tooltips[i]);
 			add(b);

@@ -118,6 +118,7 @@ public class Merchandise extends JFrame implements ActionListener{
 				lb.setLockedAll(false);
 				break;
 			case "Save":
+				insert();
 				break;
 			case "Edit":
 				update();
@@ -227,7 +228,7 @@ public class Merchandise extends JFrame implements ActionListener{
 		try{
 			Statement state =db.getConnection().createStatement();
 			
-			state.addBatch("delete from merchandise where reference='"+lb.getValue(0)+"'");
+			state.executeUpdate("delete from merchandise where reference='"+lb.getValue(0)+"'");
  
 			JOptionPane.showMessageDialog(null,"Done","Production Management",JOptionPane.INFORMATION_MESSAGE);
 			//moveNext();

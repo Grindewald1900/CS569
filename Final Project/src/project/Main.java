@@ -14,8 +14,7 @@ import javax.swing.JMenuItem;
 public class Main extends JFrame implements ActionListener{
 	
 	Container content;
-	// TODO change the image path
-	Image img = Toolkit.getDefaultToolkit().getImage("Final Project/Images/Production2.png");
+	Image img = Toolkit.getDefaultToolkit().getImage("Images/Production2.png");
 	private DataBase db;
 	public Main(DataBase db){
 		super("Production management");
@@ -32,6 +31,8 @@ public class Main extends JFrame implements ActionListener{
 		setSize(500, 500);
 		setVisible(true);
 	}
+	
+
 	
 	public void addJMenu(){
 		String [][]s={{"File","Administration","Exit"},

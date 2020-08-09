@@ -14,8 +14,7 @@ public class JToolBarButton extends JToolBar{
 	public JToolBarButton(String[] labels){
 		TB= new Vector();
 		for(int i=0;i<labels.length;i++){
-				// TODO change the image path
-				ImageIcon ig = new ImageIcon(new ImageIcon("Final Project/Images/"+
+				ImageIcon ig = new ImageIcon(new ImageIcon("Images/"+
 				labels[i]+".png").getImage().getScaledInstance(50, 50, Image.SCALE_AREA_AVERAGING));
 				
 				JButton b= new JButton(ig);

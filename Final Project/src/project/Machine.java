@@ -101,6 +101,7 @@ public class Machine extends JFrame implements ActionListener{
 				lb.setLockedAll(false);
 				break;
 			case "Save":
+				insert();
 				break;
 			case "Edit":
 				update();
